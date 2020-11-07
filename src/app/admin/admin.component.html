@@ -1,0 +1,15 @@
+<mat-card-actions align="center">
+  <a mat-raised-button [routerLink]="['course', '']" routerLinkActive="router-link-active" color="primary">Add Course</a>
+</mat-card-actions>
+
+<mat-card *ngFor="let course of courses" style="margin-bottom: 20px">
+  <mat-card-content>
+    {{ course.name }}
+  </mat-card-content>
+
+  <mat-card-actions align="start">
+    <a mat-raised-button [routerLink]="['course', course.name]"
+    routerLinkActive="router-link-active" color="primary">Edit</a>
+    <a mat-raised-button (click)="deleteCourse(course.name)" color="warn">Delete</a>
+  </mat-card-actions>
+</mat-card>

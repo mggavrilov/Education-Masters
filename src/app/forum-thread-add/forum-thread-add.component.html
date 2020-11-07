@@ -1,0 +1,36 @@
+<mat-card>
+  <mat-card-header align="center">
+    <mat-card-title>
+      New Forum Thread
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form (ngSubmit)="submit()" #forumForm="ngForm">
+      <mat-form-field>
+        <input name="name" [(ngModel)]="post.name" matInput required minlength="10" maxlength="20" placeholder="Name" #name="ngModel">
+        <mat-error *ngIf="name.invalid && (name.dirty || name.touched) && name.errors.required">
+            Post name is required.
+          </mat-error>
+          <mat-error *ngIf="name.invalid && (name.dirty || name.touched) && name.errors.minlength">
+            Post name must be at least 10 symbols.
+          </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea name="description" [(ngModel)]="post.description" matInput required minlength="20" rows="10" cols="15" 
+            placeholder="Description"
+            #description="ngModel">
+          </textarea>
+          <mat-error *ngIf="description.invalid && (description.dirty || description.touched) && description.errors.required">
+              Description is required.
+            </mat-error>
+            <mat-error *ngIf="description.invalid && (description.dirty || description.touched) && description.errors.minlength">
+              Description must be at least 20 characters long.
+            </mat-error>
+      </mat-form-field>
+      <br/>
+
+      <button [disabled]="!forumForm.form.valid" type="submit" mat-raised-button color="primary">Add Forum Thread</button>
+    </form>
+  </mat-card-content>
+</mat-card>

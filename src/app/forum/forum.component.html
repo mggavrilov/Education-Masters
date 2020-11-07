@@ -1,0 +1,14 @@
+<mat-card-actions align="center">
+  <a mat-raised-button [routerLink]="['forum-thread-add']" routerLinkActive="router-link-active" color="primary">Add Post</a>
+</mat-card-actions>
+
+<mat-card *ngFor="let post of posts" style="margin-bottom: 20px">
+  <mat-card-header>
+      <a mat-card-title [routerLink]="['/forum', 'post', post.name]">{{ post.name }}</a>
+      <mat-card-subtitle>Author: {{ post.author }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    {{ post.description }}
+  </mat-card-content>
+  
+</mat-card>

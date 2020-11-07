@@ -1,0 +1,66 @@
+<mat-card>
+  <mat-card-header align="center">
+    <mat-card-title>
+      Rate our system
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form (ngSubmit)="submit()" #feedbackForm="ngForm">
+      <div>
+        <mat-form-field align="center">
+          <textarea name="comments" [(ngModel)]="form.comments" matInput required minlength="20" rows="10" cols="15" 
+            placeholder="Your Comments"
+            #comments="ngModel">
+          </textarea>
+          <mat-error *ngIf="comments.invalid && (comments.dirty || comments.touched) && comments.errors.required">
+            Comments are required.
+          </mat-error>
+          <mat-error *ngIf="comments.invalid && (comments.dirty || comments.touched) && comments.errors.minlength">
+            Comments must be at least 20 characters long.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <mat-select name="rating" placeholder="Rating" [(ngModel)]="form.rating" required #rating="ngModel">
+          <mat-option [value]="1">
+            1
+          </mat-option>
+          <mat-option [value]="2">
+            2
+          </mat-option>
+          <mat-option [value]="3">
+            3
+          </mat-option>
+          <mat-option [value]="4">
+            4
+          </mat-option>
+          <mat-option [value]="5">
+            5
+          </mat-option>
+          <mat-option [value]="6">
+            6
+          </mat-option>
+          <mat-option [value]="7">
+            7
+          </mat-option>
+          <mat-option [value]="8">
+            8
+          </mat-option>
+          <mat-option [value]="9">
+            9
+          </mat-option>
+          <mat-option [value]="10">
+            10
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div align="center">
+          <img mat-card-avatar src="../../assets/img/user.png">
+          <mat-card-subtitle>Ivan Ivanov</mat-card-subtitle>
+      </div>
+      <mat-card-actions align="center">
+        <button [disabled]="!feedbackForm.form.valid" type="submit" mat-raised-button color="primary">Submit</button>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+</mat-card>

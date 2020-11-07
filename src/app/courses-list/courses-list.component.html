@@ -1,0 +1,29 @@
+<div class="search">
+    <mat-form-field class="search-box">
+        <input #phraseInput matInput placeholder="Search by Course Name">
+    </mat-form-field>
+</div>
+
+<mat-card *ngFor="let course of displayedCourses | filter:phraseInput.value" style="margin-bottom: 20px">
+    <mat-card-header>
+        <a mat-card-title [routerLink]="['course', course.name]">{{ course.name }}</a>
+        <mat-card-subtitle>Lecturer: {{ course.lecturer }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="course-description">
+        <img src="//www.valuecoders.com/blog/wp-content/uploads/2016/09/Angular-2.jpg" height="200" class="course-image">
+        {{ course.details }}
+    </mat-card-content>
+
+    <mat-card-actions *ngIf="!course.enrolled; else progress" align="start">
+        <a *ngIf="logged" mat-raised-button [routerLink]="['course', course.name]" routerLinkActive="router-link-active" color="primary">Enroll</a>
+    </mat-card-actions>
+
+    <ng-template #progress>
+        <mat-card-footer *ngIf="logged">
+            <span style="margin: 20px; float: right">Progress: {{ course.progress }}%</span>
+            <mat-progress-bar mode="determinate" [value]="course.progress" [bufferValue]="" color="primary"></mat-progress-bar>
+        </mat-card-footer>
+    </ng-template>
+</mat-card>
+
+<mat-paginator (page)="changePage($event)" [length]="courses.length" [pageSizeOptions]="[coursesPerPage]"></mat-paginator>

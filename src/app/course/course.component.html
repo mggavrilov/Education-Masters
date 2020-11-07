@@ -1,0 +1,32 @@
+<h2>
+  {{ course.name }}
+</h2>
+
+<h3>
+  {{ course.lecturer }}
+</h3>
+
+<p>
+  {{ course.details }}
+</p>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let presentation of course.presentations">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{presentation.presentationName}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-card-content>
+      <div class="loader">
+        <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(presentation.url)" 
+        width="640" 
+        height="480"
+        ></iframe>
+      </div>
+    </mat-card-content>
+  </mat-expansion-panel>
+</mat-accordion>
+<div class="course-buttons">
+  <a *ngIf="logged" mat-raised-button [routerLink]="['/favorites']" routerLinkActive="router-link-active" color="primary">Add to favorites</a>
+  <a *ngIf="logged" mat-raised-button [routerLink]="['/feedback']" routerLinkActive="router-link-active" color="primary">Rate Course</a>
+</div>

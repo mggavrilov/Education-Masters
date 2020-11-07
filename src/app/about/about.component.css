@@ -1,0 +1,21 @@
+mat-card {
+    width: 25%;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+mat-card-header {
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    display: flex;
+    flex-wrap: border-box;
+}
+
+.text {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 10px;
+}

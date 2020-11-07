@@ -1,0 +1,25 @@
+.search {
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-box {
+    width: 100%;
+}
+
+.course-description {
+    display: inline-block;
+    vertical-align: top;
+    width: 70%;
+}
+
+.course-image {
+    float: left;
+    margin-right:15px;
+}
+
+mat-card-header a {
+    text-decoration-line: none;
+    font-size: 30px;
+}

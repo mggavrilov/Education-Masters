@@ -1,0 +1,22 @@
+<mat-toolbar>
+  <span><a [routerLink]="['/']" mat-button><img src="assets/educationMastersLogo.png" height="30" width="30"> Education Masters</a></span>
+  <span>
+    <a [routerLink]="['/courses']" mat-button>Courses</a>
+    <a *ngIf="logged" [routerLink]="['/favorites']" mat-button>Favorites</a>
+    <a *ngIf="logged" [routerLink]="['/forum']" mat-button>Forum</a>
+    <a [routerLink]="['/about']" mat-button>About</a>
+    <a [routerLink]="['/donate']" mat-button>Donate</a>
+  </span>
+  <span class="blankSpace"></span>
+  <span>
+    <a *ngIf="!logged" [routerLink]="['/register']" mat-button>Register</a>
+    <a *ngIf="!logged" [routerLink]="['/login']" mat-button>Login</a>
+    <a *ngIf="logged" [routerLink]="['/feedback']" mat-button>Feedback</a>
+    <a *ngIf="admin" [routerLink]="['/administration']" mat-button>Administration</a>
+    <app-logout *ngIf="!!logged"></app-logout>
+  </span>
+</mat-toolbar>
+
+<div style="margin: 20px">
+  <router-outlet></router-outlet>
+</div>

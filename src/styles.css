@@ -1,0 +1,7 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+body {
+    background-image: url('assets/img/background-image.jpg');
+    background-repeat: repeat;
+}

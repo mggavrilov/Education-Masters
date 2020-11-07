@@ -1,0 +1,16 @@
+mat-card {
+    width: 50%;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+mat-form-field {
+    display: block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+mat-card-header {
+    display: flex;
+    justify-content: center;
+}

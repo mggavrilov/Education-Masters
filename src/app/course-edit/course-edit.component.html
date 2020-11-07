@@ -1,0 +1,50 @@
+<mat-card>
+  <mat-card-header align="center">
+    <mat-card-title *ngIf="originalName">
+      Edit Course
+    </mat-card-title>
+    <mat-card-title *ngIf="!originalName">
+      Create new Course
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form (ngSubmit)="submit()" #courseForm="ngForm">
+      <mat-form-field>
+        <input name="name" [(ngModel)]="course.name" matInput required placeholder="Name" minlength="8" #name="ngModel">
+        <mat-error *ngIf="name.invalid && (name.dirty || name.touched) && name.errors.required">
+          Name is required.
+        </mat-error>
+        <mat-error *ngIf="name.invalid && (name.dirty || name.touched) && name.errors.minlength">
+          Name must be at least 8 symbols.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input name="lecturer" [(ngModel)]="course.lecturer" matInput required placeholder="Lecturer" minlength="4" #lecturer="ngModel">
+        <mat-error *ngIf="lecturer.invalid && (lecturer.dirty || lecturer.touched) && lecturer.errors.required">
+          Lecturer is required.
+        </mat-error>
+        <mat-error *ngIf="lecturer.invalid && (lecturer.dirty || lecturer.touched) && lecturer.errors.minlength">
+          Lecturer must be at least 4 symbols.
+        </mat-error>
+      </mat-form-field>
+      <br/>
+
+      <mat-form-field>
+        <textarea name="details" [(ngModel)]="course.details" matInput required minlength="50" rows="10" cols="15" placeholder="Description"
+          #details="ngModel">
+        </textarea>
+        <mat-error *ngIf="details.invalid && (details.dirty || details.touched) && details.errors.required">
+          Details about the course is required.
+        </mat-error>
+        <mat-error *ngIf="details.invalid && (details.dirty || details.touched) && details.errors.minlength">
+          Details must be at least 50 symbols.
+        </mat-error>
+      </mat-form-field>
+      <br/>
+
+      <button [disabled]="!courseForm.form.valid" *ngIf="originalName" type="submit" mat-raised-button color="primary">Edit Course</button>
+      <button [disabled]="!courseForm.form.valid" *ngIf="!originalName" type="submit" mat-raised-button color="primary">Add Course</button>
+    </form>
+  </mat-card-content>
+</mat-card>
